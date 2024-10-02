@@ -1,0 +1,33 @@
+name: 'PR Plugin Action'
+description: 'A GitHub Action that creates a pull request using custom settings.'
+author: 'Your Name'
+inputs:
+  github_token:
+    description: 'GitHub token for authentication'
+    required: true
+  base_branch:
+    description: 'The base branch for the pull request (e.g., main)'
+    required: true
+  head_branch:
+    description: 'The branch with the new feature (e.g., feature-branch)'
+    required: true
+  pr_title:
+    description: 'The title of the pull request'
+    required: true
+  pr_body:
+    description: 'The body of the pull request'
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.base_branch }}
+    - ${{ inputs.head_branch }}
+    - ${{ inputs.pr_title }}
+    - ${{ inputs.pr_body }}
+
+branding:
+  icon: 'git-pull-request'
+  color: 'blue'
