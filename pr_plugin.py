@@ -6,6 +6,20 @@ import sys
 GITHUB_API_URL = "https://api.github.com"
 
 def create_pull_request(token, owner, repo, base_branch, head_branch, pr_title, pr_body):
+    """Creates a new pull request on GitHub.
+    
+    Args:
+        token (str): GitHub authentication token.
+        owner (str): The owner of the repository.
+        repo (str): The name of the repository.
+        base_branch (str): The name of the branch you want the changes pulled into.
+        head_branch (str): The name of the branch where your changes are implemented.
+        pr_title (str): The title of the pull request.
+        pr_body (str): The contents of the pull request.
+    
+    Returns:
+        None: This function doesn't return anything, it prints the result to console.
+    """
     url = f"{GITHUB_API_URL}/repos/{owner}/{repo}/pulls"
 
     headers = {
